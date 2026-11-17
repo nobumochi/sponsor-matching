@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lineup: streamer sponsorship intake</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#EDEFF7;--surface:#FFFFFF;--ink:#14162B;--muted:#5A5E7A;--line:#14162B;--accent:#5B3DF5;--accent-ink:#FFFFFF;--soft:#E1E0FB;--good:#12A06A;--warn:#D9482B;--shadow:#14162B;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1020;--surface:#191B33;--ink:#EEF0FF;--muted:#9FA3C4;--line:#EEF0FF;--accent:#8C78FF;--accent-ink:#0F1020;--soft:#2A2C52;--good:#3CD493;--warn:#FF7A5C;--shadow:#8C78FF;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1020;--surface:#191B33;--ink:#EEF0FF;--muted:#9FA3C4;--line:#EEF0FF;--accent:#8C78FF;--accent-ink:#0F1020;--soft:#2A2C52;--good:#3CD493;--warn:#FF7A5C;--shadow:#8C78FF;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+.wrap{max-width:780px;margin:0 auto;padding:20px 20px 64px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.brand{font:800 22px "Bricolage Grotesque",sans-serif;letter-spacing:-.03em}
+.brand i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--warn);margin-right:8px;vertical-align:1px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.ghost{background:none;border:0;color:var(--muted);padding:8px 4px;text-decoration:underline;text-underline-offset:3px}
+.btn{background:var(--accent);color:var(--accent-ink);border:2px solid var(--line);border-radius:10px;padding:13px 22px;font-weight:700;box-shadow:4px 4px 0 var(--shadow)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
+.btn.alt{background:var(--surface);color:var(--ink)}
+.hero h1{font-size:clamp(40px,8vw,72px);font-weight:800;max-width:12ch}
+.hero p{font-size:19px;color:var(--muted);max-width:46ch;margin:20px 0 28px}
+.bar{display:flex;gap:6px;margin-bottom:10px}
+.bar span{flex:1;height:8px;border-radius:4px;background:var(--soft)}
+.bar span.on{background:var(--accent)}
+.count{font-size:14px;color:var(--muted);margin-bottom:22px}
+.q h2{font-size:clamp(28px,5vw,42px);font-weight:800}
+.q p.hint{color:var(--muted);margin:10px 0 26px;max-width:56ch}
+.field{margin-bottom:26px}
+.field>label,.field>.lab{display:block;font-weight:700;margin-bottom:4px}
+.field .opt-t{font-weight:400;color:var(--muted);font-size:14px;margin-left:6px}
+.field .help{font-size:14px;color:var(--muted);margin:0 0 10px}
+input[type=text],input[type=email],textarea{width:100%;font:inherit;padding:13px 14px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+textarea{min-height:96px;resize:vertical}
+.bad input,.bad textarea{border-color:var(--warn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:500;transition:transform .12s,box-shadow .12s}
+.chip:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--shadow)}
+.chip[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);box-shadow:3px 3px 0 var(--shadow);font-weight:700}
+.slide{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.slide input[type=range]{flex:1;min-width:200px;accent-color:var(--accent);height:28px}
+output{font:700 18px "Bricolage Grotesque",sans-serif;min-width:150px}
+.age2{display:grid;gap:6px}
+.age2 .slide span{width:38px;font-size:14px;color:var(--muted)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400}
+.chk input{width:20px;height:20px;margin-top:3px;accent-color:var(--accent)}
+.err{border:2px solid var(--warn);color:var(--warn);border-radius:10px;padding:12px 16px;margin-bottom:24px;font-weight:500}
+.err ul{margin:6px 0 0;padding-left:20px}
+.nav{margin-top:30px;display:flex;gap:16px;align-items:center}
+.thanks h2{font-size:clamp(36px,7vw,62px);font-weight:800;max-width:14ch}
+.thanks .lead{font-size:19px;max-width:52ch;margin:20px 0 10px}
+.thanks .sub{color:var(--muted);max-width:52ch}
+.panel{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:20px 22px;margin:28px 0;box-shadow:6px 6px 0 var(--shadow)}
+.panel h3{font-size:20px;margin-bottom:10px}
+.panel ul{margin:0;padding-left:20px}
+.panel li{margin-bottom:6px}
+details{margin:6px 0 24px}
+summary{cursor:pointer;font-weight:700}
+dl{display:grid;grid-template-columns:minmax(120px,200px) 1fr;gap:8px 18px;margin:16px 0 0}
+dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}
+.toast{font-size:14px;color:var(--good)}
+.codebox{font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;margin:12px 0;word-break:break-all}
+a.btn{display:inline-block;text-decoration:none}
+.panel ol{margin:14px 0 0;padding-left:20px}
+#dout{margin-top:24px}
+.bigcode{font:800 clamp(26px,6vw,40px) ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;margin:8px 0 12px;word-break:break-all}
+@media(max-width:520px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand"><i></i>Lineup</div><button class="ghost" id="reset" hidden>Start over</button></div>
+  <main id="app" aria-live="polite"></main>
+</div>
+<script>
+const TEAM_EMAIL=""; // Put your team's email here to show an Open email button on the final screen
+const SIZES=[0,500,1000,2500,5000,10000,25000,50000];
+const AL="0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+function layout(){const L=[];STEPS.forEach(s=>s.f.forEach(f=>{if(f.type==="single")L.push([f,Math.ceil(Math.log2(f.o.length+1))]);else if(f.type==="multi")L.push([f,f.o.length]);else if(f.type==="slider")L.push([f,Math.ceil(Math.log2(f.arr.length))]);else if(f.type==="age")L.push([f,12])}));return L}
+function enc(v){let b="";layout().forEach(([f,n])=>{let x;if(f.type==="single")x=f.o.indexOf(v[f.k])+1;else if(f.type==="multi")x=f.o.reduce((a,o,i)=>a|(v[f.k].includes(o)?1<<i:0),0);else if(f.type==="slider")x=v[f.k];else x=((v.ageMin-13)<<6)|(v.ageMax-13);b+=x.toString(2).padStart(n,"0")});while(b.length%5)b+="0";const d=b.match(/.{5}/g).map(c=>parseInt(c,2));d.push(d.reduce((a,x,i)=>a+x*(i+1),0)%32);return d.map(x=>AL[x]).join("").match(/.{1,5}/g).join("-")}
+function dec(s){try{s=s.toUpperCase().replace(/[^0-9A-Z]/g,"").replace(/O/g,"0").replace(/[IL]/g,"1");const d=[...s].map(c=>{const i=AL.indexOf(c);if(i<0)throw 0;return i});const ck=d.pop();if(d.reduce((a,x,i)=>a+x*(i+1),0)%32!==ck)return null;const b=d.map(x=>x.toString(2).padStart(5,"0")).join("");let p=0;const v={};layout().forEach(([f,n])=>{const x=parseInt(b.substr(p,n),2);p+=n;if(f.type==="single")v[f.k]=x>0?f.o[x-1]||"":"";else if(f.type==="multi")v[f.k]=f.o.filter((o,i)=>x&(1<<i));else if(f.type==="slider")v[f.k]=x;else{v.ageMin=(x>>6)+13;v.ageMax=(x&63)+13}});return p>b.length?null:v}catch(e){return null}}
+function emailText(){const L=["Lineup response","Code: "+enc(S.v)];STEPS.forEach(s=>s.f.forEach(f=>{if(["text","textarea","email"].includes(f.type)){const t=(S.v[f.k]||"").trim().replace(/\s*\n\s*/g," ");if(t)L.push(f.label+": "+t)}}));return L.join("\n")}
+function decodeMsg(t){t=t||"";const m=t.match(/Code:\s*([0-9A-Za-z-]+)/),v=dec(m?m[1]:t);if(!v)return null;t.split(/\r?\n/).forEach(l=>{const i=l.indexOf(": ");if(i>0){const lab=l.slice(0,i).trim();STEPS.forEach(s=>s.f.forEach(f=>{if(f.label===lab&&["text","textarea","email"].includes(f.type))v[f.k]=l.slice(i+2)}))}});return v}
+
+function answersFrom(v){const rows=[];STEPS.forEach(s=>s.f.forEach(f=>{if(f.type==="check")return;const x=v[f.k];let t;if(f.type==="slider")t=f.txt(x);else if(f.type==="age")t=ageTxt(v.ageMin,v.ageMax);else if(f.type==="multi")t=(x||[]).join(", ");else t=(x||"").trim();if(t)rows.push([f.label,t])}));return rows}
+const BUDGETS=[500,1000,2500,5000,10000,25000,50000,100000];
+const usd=n=>"$"+n.toLocaleString("en-US");
+const fmt=n=>n>=1000?(n/1000)+"K":String(n);
+const sizeTxt=i=>SIZES[i]===0?"Any size":fmt(SIZES[i])+"+ average live viewers";
+const budTxt=i=>i===BUDGETS.length-1?usd(BUDGETS[i])+" or more":"Up to "+usd(BUDGETS[i]);
+const ageTxt=(a,b)=>a+" to "+(b>=65?"65+":b);
+
+const STEPS=[
+{t:"Tell us about your company",h:"Start with the basics so we know who we’re matching.",f:[
+ {k:"company",type:"text",label:"Company name",ph:"Example: Northwind Snacks",req:"Add your company name."},
+ {k:"industry",type:"single",label:"Industry",req:"Choose your industry.",o:["Gaming and tech hardware","Food and drink","Apparel and lifestyle","Software and apps","Finance and fintech","Health and fitness","Education and learning","Entertainment and media","Other"]},
+ {k:"country",type:"text",label:"Country",ph:"Where is your company based?",req:"Add your country."}]},
+{t:"What is the campaign?",h:"Tell us what you want to achieve and how you want to work together.",f:[
+ {k:"objective",type:"multi",label:"Campaign objective",help:"Choose all that apply.",req:"Choose at least one campaign objective.",o:["Brand awareness","Sales or sign-ups","Product demos","Community building","App installs","Event promotion"]},
+ {k:"partnership",type:"multi",label:"Partnership type",help:"Choose all that apply.",req:"Choose at least one partnership type.",o:["Sponsored stream","Product giveaway","Affiliate or promo code","Long-term ambassador","Tournament or event","Product seeding"]},
+ {k:"budget",type:"slider",label:"Budget",help:"Total campaign budget in US dollars.",arr:BUDGETS,txt:budTxt}]},
+{t:"Who do you want to reach?",h:"Describe the viewers you want to see your brand.",f:[
+ {k:"age",type:"age",label:"Target age range",help:"Drag both ends to set the range."},
+ {k:"size",type:"slider",label:"Target audience size",help:"The smallest streamer audience you would consider.",arr:SIZES,txt:sizeTxt},
+ {k:"location",type:"multi",label:"Target location",help:"Choose all that apply.",req:"Choose at least one target location.",o:["North America","Europe","Asia-Pacific","Latin America","Middle East and Africa","Worldwide"]},
+ {k:"locationNote",type:"text",label:"Specific countries or cities",opt:1,ph:"Example: South Korea, Japan, Toronto"},
+ {k:"language",type:"multi",label:"Sponsorship language",help:"The language the streamer should speak on stream.",o:["English","Korean","Japanese","Spanish","Portuguese","French","German","Chinese"]},
+ {k:"languageOther",type:"text",label:"Other language",opt:1,ph:"Example: Thai"}]},
+{t:"What kind of streamer?",h:"Tell us where and how you want your brand to appear.",f:[
+ {k:"platform",type:"multi",label:"Preferred platform",help:"Choose all that apply.",req:"Choose at least one platform.",o:["Twitch","YouTube","Kick","TikTok Live","CHZZK","SOOP","No preference"]},
+ {k:"style",type:"multi",label:"Preferred stream style",help:"Choose all that apply.",req:"Choose at least one stream style, or No preference.",none:"No preference",o:["Reviews and demos","High-energy entertainment","Educational and how-to","Competitive play","Chill and conversational","No preference"]},
+ {k:"streamerAudience",type:"textarea",label:"Target streamer audience",opt:1,help:"Describe the audience you want the streamer to have.",ph:"Example: Hardcore strategy-game fans who watch for the commentary"}]},
+{t:"Values, limits, and past experience",h:"Help us avoid a bad fit and learn from what you have already tried.",f:[
+ {k:"values",type:"multi",label:"Key values and interests",help:"Choose all that apply.",req:"Choose at least one value or interest.",o:["Sustainability","Inclusivity","Innovation","Family-friendly","Competition","Creativity","Community","Humor","Wellness","Education"]},
+ {k:"valuesNote",type:"textarea",label:"Anything else about your brand",opt:1,ph:"Tell us about your brand voice or interests"},
+ {k:"refuse",type:"multi",label:"Partnerships you would refuse",help:"We will not suggest streamers with these traits.",req:"Choose what you would refuse, or No restrictions.",none:"No restrictions",o:["Gambling content","Mature or adult themes","Heavy profanity","Political content","Past controversies","Competitor sponsorships","No restrictions"]},
+ {k:"refuseNote",type:"textarea",label:"Other deal-breakers",opt:1,ph:"Name any streamers, topics, or brands to avoid"},
+ {k:"experience",type:"single",label:"Previous creator experience",req:"Choose your previous creator experience.",o:["None yet","A few one-off sponsorships","Ongoing creator partnerships"]},
+ {k:"experienceNote",type:"textarea",label:"What worked or did not work",opt:1,ph:"Share anything from past campaigns that we should know"}]},
+{t:"Where should we send your matches?",h:"We will email you a list of streamers who fit your answers.",f:[
+ {k:"contactName",type:"text",label:"Your name",opt:1,ph:"Full name"},
+ {k:"email",type:"email",label:"Contact email",ph:"you@company.com"},
+ {k:"consent",type:"check",label:"I agree to be contacted at this email about streamer matches."}]}
+];
+
+const S={step:0,err:[],v:{ageMin:18,ageMax:34,budget:3,size:0,consent:false}};
+STEPS.forEach(s=>s.f.forEach(f=>{if(f.type==="multi")S.v[f.k]=[]}));
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const emailOk=s=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((s||"").trim());
+
+function fieldHTML(f){
+  const v=S.v[f.k],bad=S.err.some(e=>e.k===f.k)?" bad":"";
+  const lab=`${esc(f.label)}${f.opt?'<span class="opt-t">optional</span>':""}`;
+  const help=f.help?`<p class="help" id="h_${f.k}">${esc(f.help)}</p>`:"";
+  let body="";
+  if(f.type==="text"||f.type==="email")body=`<input type="${f.type==="email"?"email":"text"}" id="f_${f.k}" data-k="${f.k}" value="${esc(v)}" placeholder="${esc(f.ph||"")}" maxlength="120" ${f.type==="email"?'autocomplete="email" inputmode="email"':""}>`;
+  else if(f.type==="textarea")body=`<textarea id="f_${f.k}" data-k="${f.k}" placeholder="${esc(f.ph||"")}" maxlength="600">${esc(v)}</textarea>`;
+  else if(f.type==="single"||f.type==="multi")body=`<div class="chips" role="group" aria-labelledby="l_${f.k}">${f.o.map(o=>`<button type="button" class="chip" data-k="${f.k}" data-t="${f.type}" data-v="${esc(o)}" aria-pressed="${f.type==="multi"?v.includes(o):v===o}">${esc(o)}</button>`).join("")}</div>`;
+  else if(f.type==="slider")body=`<div class="slide"><input type="range" id="f_${f.k}" data-k="${f.k}" min="0" max="${f.arr.length-1}" step="1" value="${v}"><output id="o_${f.k}" for="f_${f.k}">${f.txt(v)}</output></div>`;
+  else if(f.type==="age")body=`<div class="age2"><div class="slide"><span>From</span><input type="range" id="f_ageMin" data-k="ageMin" min="13" max="65" value="${S.v.ageMin}" aria-label="Minimum age"></div><div class="slide"><span>To</span><input type="range" id="f_ageMax" data-k="ageMax" min="13" max="65" value="${S.v.ageMax}" aria-label="Maximum age"></div><output id="o_age">${ageTxt(S.v.ageMin,S.v.ageMax)}</output></div>`;
+  else if(f.type==="check")return `<div class="field${bad}"><label class="chk"><input type="checkbox" data-k="${f.k}" ${v?"checked":""}><span>${esc(f.label)}</span></label></div>`;
+  return `<div class="field${bad}"><label class="lab" id="l_${f.k}" ${f.type==="text"||f.type==="email"||f.type==="textarea"||f.type==="slider"?`for="f_${f.k}"`:""}>${lab}</label>${help}${body}</div>`;
+}
+
+function answers(){
+  const rows=[];
+  STEPS.forEach(s=>s.f.forEach(f=>{
+    if(f.type==="check")return;
+    let v=S.v[f.k],t;
+    if(f.type==="slider")t=f.txt(v);
+    else if(f.type==="age")t=ageTxt(S.v.ageMin,S.v.ageMax);
+    else if(f.type==="multi")t=v.join(", ");
+    else t=(v||"").trim();
+    if(t)rows.push([f.label,t]);
+  }));
+  return rows;
+}
+
+function validate(){
+  const errs=[];
+  STEPS[S.step-1].f.forEach(f=>{
+    const v=S.v[f.k];
+    if(f.type==="check"){if(!v)errs.push({k:f.k,m:"Tick the box to confirm we can contact you."});return}
+    if(f.type==="email"){if(!emailOk(v))errs.push({k:f.k,m:"Enter a valid email address, like you@company.com."});return}
+    if(!f.req)return;
+    const empty=f.type==="multi"?v.length===0:!v||!String(v).trim();
+    if(empty)errs.push({k:f.k,m:f.req});
+  });
+  return errs;
+}
+
+function render(){
+  const app=$("app");$("reset").hidden=S.step===0;
+  if(location.hash==="#decode"){$("reset").hidden=true;app.innerHTML=`<section class="q"><h2>Read a response code</h2><p class="hint">Paste the email message from a company, or just the code, to see their answers.</p><div class="field"><label class="lab" for="dcode">Response code</label><textarea id="dcode" class="codebox" rows="6"></textarea></div><div class="nav"><button class="btn" data-act="decode">Show answers</button><button class="ghost" data-act="exit">Back to the questionnaire</button></div><div id="dout"></div></section>`;return}
+  const n=STEPS.length;
+  if(S.step===0){
+    app.innerHTML=`<section class="hero"><h1>Tell us what you want from a streamer.</h1>
+    <p>Answer a few questions about your company, campaign, and audience. We will review them and email you a list of streamers who fit.</p>
+    <button class="btn" data-act="start">Start the questionnaire</button></section>`;return;
+  }
+  if(S.step>n){
+    const em=esc(S.v.email.trim()),co=esc(S.v.company.trim()),code=enc(S.v),msg=emailText(),mail=TEAM_EMAIL?"mailto:"+TEAM_EMAIL+"?subject="+encodeURIComponent("Lineup response code")+"&body="+encodeURIComponent(msg):"";
+    app.innerHTML=`<section class="thanks"><h2>Thanks for replying${co?", "+co:""}.</h2>
+    <p class="lead">One last step: email us the message below. It starts with your response code, which saves your answers, and we use it to find streamers who are compatible with your company and campaign.</p>
+    <p class="sub">Your answers are not sent until you email us the message. After that, we will reply to <b>${em}</b> with your list.</p>
+    <div class="panel"><h3>Your response code</h3><div class="bigcode">${code}</div><p class="sub" style="margin-top:0">The code saves your choices. Your company details and written notes are in the message below.</p><textarea id="code" class="codebox" readonly rows="6" aria-label="Your email message">${esc(msg)}</textarea><div class="nav" style="margin-top:0"><button class="btn" data-act="copycode">Copy email message</button>${mail?`<a class="btn alt" href="${esc(mail)}" target="_blank" rel="noopener">Open email</a>`:""}<span class="toast" id="toast2" role="status"></span></div><ol><li>Copy the email message.</li><li>Email it to ${TEAM_EMAIL?`<b>${esc(TEAM_EMAIL)}</b>`:"the team that shared this page with you"}.</li><li>We compare your answers with streamers and email you the compatible ones.</li></ol></div>
+    <details><summary>Review your answers</summary><dl>${answers().map(r=>`<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join("")}</dl></details>
+    <div class="nav"><button class="btn alt" data-act="copy">Copy my answers</button><span class="toast" id="toast" role="status"></span></div></section>`;return;
+  }
+  const st=STEPS[S.step-1];
+  app.innerHTML=`<section class="q"><div class="bar">${STEPS.map((_,i)=>`<span class="${i<S.step?"on":""}"></span>`).join("")}</div>
+  <div class="count">Step ${S.step} of ${n}</div>
+  <h2>${esc(st.t)}</h2><p class="hint">${esc(st.h)}</p>
+  ${S.err.length?`<div class="err" role="alert">Fix these to continue:<ul>${S.err.map(e=>`<li>${esc(e.m)}</li>`).join("")}</ul></div>`:""}
+  ${st.f.map(fieldHTML).join("")}
+  <div class="nav"><button class="ghost" data-act="back">Back</button><button class="btn" data-act="next">${S.step===n?"Send my answers":"Continue"}</button></div></section>`;
+}
+function go(n){S.step=n;S.err=[];render();window.scrollTo({top:0})}
+
+$("app").addEventListener("click",e=>{
+  const c=e.target.closest(".chip");
+  if(c){
+    const k=c.dataset.k,val=c.dataset.v;
+    if(c.dataset.t==="single"){S.v[k]=S.v[k]===val?"":val;c.parentNode.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(S.v[k]===x.dataset.v)))}
+    else{const a=S.v[k],i=a.indexOf(val),fd=STEPS.flatMap(s=>s.f).find(x=>x.k===k);if(i>=0)a.splice(i,1);else{if(fd.none){if(val===fd.none)a.length=0;else if(a.indexOf(fd.none)>=0)a.splice(a.indexOf(fd.none),1)}a.push(val)}c.parentNode.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(a.includes(x.dataset.v))))}
+    return;
+  }
+  const b=e.target.closest("[data-act]");if(!b)return;
+  const act=b.dataset.act;
+  if(act==="start")go(1);
+  else if(act==="back")go(S.step-1);
+  else if(act==="next"){
+    const errs=validate();
+    if(errs.length){S.err=errs;render();window.scrollTo({top:0});return}
+    go(S.step+1);
+  }
+  else if(act==="copycode"){const t=$("toast2"),c=$("code");c.focus();c.select();try{navigator.clipboard.writeText(c.value).then(()=>t.textContent="Code copied.",()=>t.textContent="Code selected. Press Ctrl+C or Cmd+C to copy it.")}catch(x){t.textContent="Code selected. Press Ctrl+C or Cmd+C to copy it."}}
+  else if(act==="decode"){const o=decodeMsg($("dcode").value);let rows=null;try{rows=o?answersFrom(o):null}catch(x){}$("dout").innerHTML=rows&&rows.length?`<div class="panel"><h3>Answers</h3><dl>${rows.map(r=>`<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join("")}</dl></div>`:`<div class="err" role="alert">That code could not be read. Check the code for typos. It looks like 8F34D-K2M9Q-7XT4A-HB6.</div>`}
+  else if(act==="exit"){location.hash=""}
+  else if(act==="copy"){
+    const txt="Lineup sponsorship answers\n"+answers().map(r=>r[0]+": "+r[1]).join("\n"),t=$("toast");
+    try{navigator.clipboard.writeText(txt).then(()=>t.textContent="Copied.",()=>t.textContent="Copy failed. Select the text under Review your answers instead.")}catch(x){t.textContent="Copy failed. Select the text under Review your answers instead."}
+  }
+});
+$("app").addEventListener("input",e=>{
+  const t=e.target,k=t.dataset.k;if(!k||t.classList.contains("chip"))return;
+  if(t.type==="checkbox")S.v[k]=t.checked;
+  else if(t.type==="range"){
+    S.v[k]=+t.value;
+    if(k==="ageMin"&&S.v.ageMin>S.v.ageMax){S.v.ageMax=S.v.ageMin;$("f_ageMax").value=S.v.ageMax}
+    if(k==="ageMax"&&S.v.ageMax<S.v.ageMin){S.v.ageMin=S.v.ageMax;$("f_ageMin").value=S.v.ageMin}
+    if(k==="ageMin"||k==="ageMax")$("o_age").textContent=ageTxt(S.v.ageMin,S.v.ageMax);
+    else{const f=STEPS.flatMap(s=>s.f).find(x=>x.k===k);$("o_"+k).textContent=f.txt(S.v[k])}
+  }else S.v[k]=t.value;
+});
+$("reset").addEventListener("click",()=>{
+  Object.keys(S.v).forEach(k=>{S.v[k]=Array.isArray(S.v[k])?[]:typeof S.v[k]==="string"?"":S.v[k]});
+  Object.assign(S.v,{ageMin:18,ageMax:34,budget:3,size:0,consent:false});go(0);
+});
+window.addEventListener("hashchange",render);
+render();
+</script>
+</body>
+</html>
